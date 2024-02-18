@@ -158,7 +158,7 @@ form{
 <div class="main">
     
 <section>
-<form action="register.php" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
 
 <h1>Login Now</h1>
 
@@ -174,26 +174,54 @@ form{
 <input type="password" name="password" maxlength="20" placeholder="Enter your password" required>
 </div>
 
-<button type="submit" class="btn">login now</button>
+<button type="submit" name="register" class="btn">login now</button>
 <p>do not have an account ?<a href="register.php"> register now</a></p>
 
 </form>
 
 </section>
 
-
-
-
-
-
-
 </div> 
-
-
-
-
-
-
 
 </body>
 </html>
+<?php
+include '../component/dbconnect.php';
+
+if(isset($_POST['register'])){
+$email=$_POST['email'];
+$password=$_POST['password'];
+
+
+$checkemail=$conn->prepare("SELECT * FROM `seller` WHERE `s-email` = ?");
+$checkemail->execute([$email]);
+
+if($checkemail->rowCount()>0){
+    // $checkpassword=$conn->prepare("SELECT * FROM `seller` WHERE `s-password` = ?");
+    // $checkpassword->execute([$password]);
+
+    $fetchselleremail= $checkemail->fetch(PDO::FETCH_ASSOC);
+    $emailresult=$fetchselleremail['s-password'];
+
+    if($emailresult==$password){
+
+
+        echo'<script>alert("signin successfully."); </script>';        
+    }else{
+        echo'<script>alert("incorrect password!."); </script>';
+
+    }
+
+    // echo'<script>alert("signin successfully outside."); </script>'; just a reminder things for me 
+    
+}else{
+
+    
+    echo'<script>alert("Invalid useremail!,Please register first."); </script>';
+    // echo'<script>alert("incorrect username or password."); </script>';just a reminder things for me
+
+}
+
+}
+
+?>
