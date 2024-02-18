@@ -204,9 +204,12 @@ if($checkemail->rowCount()>0){
     $emailresult=$fetchselleremail['s-password'];
 
     if($emailresult==$password){
+;
+    //=================================== header use gare below script not work why =============================================
+    echo'<script>alert("signin successfully."); </script>';        
+        header("location:dashboard.php");
 
 
-        echo'<script>alert("signin successfully."); </script>';        
     }else{
         echo'<script>alert("incorrect password!."); </script>';
 
