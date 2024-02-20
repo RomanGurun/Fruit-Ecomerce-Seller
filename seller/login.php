@@ -67,7 +67,6 @@ section{
    /* width:100%; */
 flex-wrap:wrap;
 margin: 20px 20px;
-height: 20rem;
 box-shadow: 0 10px 18px 0 rgba(0 0 0/10%);
     background: #fff;
   
@@ -129,6 +128,15 @@ a{
     color:red;
     text-decoration:none;
 }
+
+.logo{
+border-radius:20px;
+width:17%;
+display: block;
+margin: 21px auto;
+}
+
+
 @media(max-width:991px){
 .main{
     margin:2rem;
@@ -148,11 +156,14 @@ form{
      width:40%;
     font-size:18px;
 }
+.logo{
+width:22%; 
+
 }
-
-
-
+}
     </style>
+
+
 </head>
 <body>
 <div class="main">
@@ -161,11 +172,15 @@ form{
 <form action="" method="post" enctype="multipart/form-data">
 
 <h1>Login Now</h1>
+<div class="input-field">
+    <img class="logo" src="../sellerimage/ourlogo.jpg" alt="no image">
+
+</div> 
 
 <div class="input-field">
 
 <label for="">user email</label>
-<input type="email" name="email" maxlength="20" placeholder="Enter your email" required>
+<input type="email" name="email" maxlength="26" placeholder="Enter your email" required>
 </div>
 
 

@@ -1,0 +1,4 @@
+<?php
+echo"WELCOME TO DASHBOARD PAGE!"
+
+?>

@@ -10,7 +10,7 @@ $conn= new PDO($db_name,$username,$userpasword);
 
 
 if($conn){
-    echo'database connecetd successfully';
+    // echo'database connecetd successfully';
 
 }else{
 

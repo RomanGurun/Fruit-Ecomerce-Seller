@@ -187,7 +187,7 @@
 
                 <div class="input-field">
                     <label for="">user email</label>
-                    <input type="email" name="email" maxlength="20" placeholder="Enter your email" required>
+                    <input type="email" name="email" maxlength="26" placeholder="Enter your email" required>
                 </div>
 
                 <div class="input-field">
@@ -274,7 +274,8 @@ $sql->execute(['',$username,$email,$password,$image]);
 echo'<script>confirm("Form Submitted on database successfully."); </script>';
 
 }else{
-    echo'<script>alert("Failed to submit on database."); </script>';
+
+    // echo'<script>alert("Failed to submit on database."); </script>';
 
 
 }
