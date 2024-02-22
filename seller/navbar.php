@@ -96,11 +96,11 @@ height: 9rem;
 
 nav a{
     display: block;
-background:var(--green);
-
+/* background:var(--green); */
+box-shadow:var(--box-shadow);
     margin: 9px;
-
 }
+
 header{
     /* justify-content:space-between; */
     flex-direction:column;

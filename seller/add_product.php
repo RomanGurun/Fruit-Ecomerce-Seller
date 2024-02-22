@@ -10,14 +10,14 @@ include 'navbar.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product Page</title>
-<link rel="stylesheet" href="../style/two.css">
-
+<!-- <link rel="stylesheet" href="../style/two.css"> -->
+<link rel="stylesheet" href="../style/original.css">
 </head>
 <body>
 
 <div class="carousel">
 <div class="fruitspage">
-<h1>ADD PRODUCTS</h1>
+<h1 id="heading">ADD PRODUCTS</h1>
 </div>
 <div class="box">
 
@@ -29,40 +29,35 @@ include 'navbar.php';
 
 <section>
     <form action="" method="post" enctype="multipart/form-data">
-
         <h1>ADD PRODUCTS</h1>
 
         <div class="input-field">
 
-            <label for="">user name <sup>*</sup></label>
-            <input type="text" name="name" maxlength="20" placeholder="Enter your username" required>
+            <label for="">Product Name <sup>*</sup></label>
+            <input type="text" name="name" maxlength="20" placeholder="add products name" required>
         </div>
 
 
         <div class="input-field">
-            <label for="">user email</label>
-            <input type="email" name="email" maxlength="26" placeholder="Enter your email" required>
+            <label for="">Product Price</label>
+            <input type="text" name="price" maxlength="26" placeholder="add products price" required>
         </div>
 
         <div class="input-field">
-            <label for="">user password</label>
-            <input type="password" name="password" maxlength="20" placeholder="Enter your password" required>
+            <label for="">product detail</label>
+        <textarea name="detail" id="" cols="30" rows="10" placeholder="write product description" required></textarea>
         </div>
 
         <div class="input-field">
-            <label for="">confirm password</label>
-            <input type="password" name="cpassword" maxlength="20" placeholder="confirm password" required>
-        </div>
-
-        <div class="input-field">
-            <label for="">select profile <sup>*</sup></label>
+            <label for="">product image <sup>*</sup></label>
             <input type="file" name="image" accept="image/*" required>
         </div>
 
-
-        <button type="submit" name="register" class="btn">register now</button>
-        <p>already have an account ?<a href="login.php"> login now</a></p>
-
+<footer class="addproduct-footer">
+        <button type="submit" name="publish" class="btn add-product-btn">publish products</button>
+        <button type="submit" name="draft" class="btn add-product-btn">save as draft</button>
+        </footer>
+      
     </form>
 
 </section>
