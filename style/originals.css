@@ -29,10 +29,13 @@
      display: flex;
     justify-content: center;
     align-items: center;
-    background: url(../img/forest.jpg);
+    /* background: url(../img/forest.jpg); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background:rgba(0, 0, 0, 0.7)  url(../sellerimage/fruit.jpg);;
+
+    background-blend-mode:darken;
     /* border: solid 2px red; */
     /* width: 100%; */
     height: 22rem;
@@ -198,4 +201,17 @@ padding:10px;
     }
 
     /*================================================ ADD PRODUCT CSSS END================================================ */
+    /*================================================ VIEW PRODUCT CSSS SATRT================================================ */
+    
+#AllProduct{
+    border:solid 2px black;
+    display:flex;
+    justify-content: center;
+    width:100%;
+}
+
+
+
+
+    /*================================================ VIEW PRODUCT CSSS END================================================ */
     

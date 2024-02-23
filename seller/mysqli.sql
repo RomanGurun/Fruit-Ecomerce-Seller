@@ -12,5 +12,7 @@ SELECT * FROM `seller` WHERE email =?
 -- ==========================================================================================
 
 
+-- 2.  PRODUCT TABLE BELOW
+CREATE TABLE `fruitsellersiteecommerce`.`products` (`p-id` INT(20) NOT NULL AUTO_INCREMENT , `p-name` VARCHAR(50) NOT NULL , `p-price` INT(25) NOT NULL , `p-image` VARCHAR(25) NOT NULL , `p-detail` VARCHAR(250) NOT NULL , `p-status` VARCHAR(20) NOT NULL , PRIMARY KEY (`p-id`)) ENGINE = InnoDB;
 
 

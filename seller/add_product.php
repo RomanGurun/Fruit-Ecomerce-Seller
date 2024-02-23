@@ -1,5 +1,73 @@
 <?php
 include 'navbar.php';
+include '../component/dbconnect.php';
+?>
+<?php
+if(isset($_POST['publish'])){
+    $productname = $_POST['name'];
+    $productprice = $_POST['price'];
+    $productdetail = $_POST['detail'];
+    $image = $_FILES['image']['name'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = "../img/".$image;
+    $status = 'active';
+
+    // Prepare the SQL statement with placeholders
+    $stmt = $conn->prepare("INSERT INTO `products` (`p-name`, `p-price`, `p-image`, `p-detail`, `p-status`) VALUES (?, ?, ?, ?, ?)");
+
+    // Bind parameters to the placeholders and execute the statement
+    $stmt->bindParam(1, $productname);
+    $stmt->bindParam(2, $productprice);
+    $stmt->bindParam(3, $image);
+    $stmt->bindParam(4, $productdetail);
+    $stmt->bindParam(5, $status);
+
+       // Execute the prepared statement
+       if ($stmt->execute()) {
+        // Upload the image file to the specified folder
+        move_uploaded_file($image_tmp_name, $image_folder);
+        echo "<script>alert('Product inserted successfully.')</script>";
+    } else {
+        echo "<script>alert('Error: Unable to insert product.')</script>";
+    
+    }
+
+}
+
+?>
+
+<?php
+if(isset($_POST['draft'])){
+    $productname = $_POST['name'];
+    $productprice = $_POST['price'];
+    $productdetail = $_POST['detail'];
+    $image = $_FILES['image']['name'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = "../img/".$image;
+    $status = 'deactive';
+
+    // Prepare the SQL statement with placeholders
+    $stmt = $conn->prepare("INSERT INTO `products` (`p-name`, `p-price`, `p-image`, `p-detail`, `p-status`) VALUES (?, ?, ?, ?, ?)");
+
+    // Bind parameters to the placeholders and execute the statement
+    $stmt->bindParam(1, $productname);
+    $stmt->bindParam(2, $productprice);
+    $stmt->bindParam(3, $image);
+    $stmt->bindParam(4, $productdetail);
+    $stmt->bindParam(5, $status);
+
+       // Execute the prepared statement
+       if ($stmt->execute()) {
+        // Upload the image file to the specified folder
+        move_uploaded_file($image_tmp_name, $image_folder);
+        echo "<script>alert('Product saved as draft successfully.')</script>";
+    } else {
+        echo "<script>alert('Error: Unable to saved product as draft.')</script>";
+    
+    }
+
+}
+
 ?>
 
 
@@ -11,7 +79,7 @@ include 'navbar.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product Page</title>
 <!-- <link rel="stylesheet" href="../style/two.css"> -->
-<link rel="stylesheet" href="../style/original.css">
+<link rel="stylesheet" href="../style/originals.css">
 </head>
 <body>
 

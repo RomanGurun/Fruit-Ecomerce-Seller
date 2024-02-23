@@ -165,7 +165,7 @@ backdrop-filter:blur(20px);
 
 <a href="dashboard.php">Dashboard</a>
 <a href="add_product.php">Add product</a>
-<a href="">view product</a>
+<a href="view_product.php">view product</a>
 <a href="">accounts</a>
 </nav>
 
