@@ -1,7 +1,12 @@
 <?php
-include 'navbar.php';
 include '../component/dbconnect.php';
+
+include 'navbar.php';
+$getid=$_GET['post_id'];
+
 ?>
+<!--========================================== Delete Operation ========================================== -->
+
 <?php
 if(isset($_POST['delete'])){
 
@@ -11,17 +16,8 @@ $delete_product->execute([$product]);
 
 }
 
-
 ?>
-
-
-
-
-
-
-<?php
-
-?>
+<!--========================================== Delete Operation ========================================== -->
 
 
 
@@ -30,33 +26,34 @@ $delete_product->execute([$product]);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Product Page</title>
-<!-- <link rel="stylesheet" href="../style/two.css"> -->
-<link rel="stylesheet" href="../style/originals.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../style/one.css">
+    <link rel="stylesheet" href="../style/originals.css">
 </head>
 <body>
-
+    
 <div class="carousel">
 <div class="fruitspage">
-<h1 id="heading">ALL PRODUCTS</h1>
+<h1 id="heading">READ PRODUCTS</h1>
 </div>
 <div class="box">
 
-<a href="dashboard.php">DASHBOARD</a><span>/ ALL PRODUCTS</span>
+<a href="dashboard.php">DASHBOARD</a><span>READ PRODUCTS</span>
 </div>
+
 <!--============================ PRODUCT BOX================================ -->
 
 <div class="main">
 
 <section>
-<h1 class="productheading">ALL PRODUCTS</h1>
+<h1 class="productheading">READ PRODUCTS</h1>
     
     <div id="AllProduct">        
           
           <?php
 
-$select_product=$conn->prepare("SELECT * FROM `products` ");
-$select_product->execute();
+$select_product=$conn->prepare("SELECT * FROM `products` WHERE `p-id`=? ");
+$select_product->execute([$getid]);
 if($select_product->rowCount()>0){
 
 while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
@@ -78,10 +75,14 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
     <?= $fetch_product['p-name']?>
 </div>
 
+<div class="farmermessage">
+    <?= $fetch_product['p-detail']?>
+</div>
+
 <div class="farmerEDRbox">
 <a class="btn" href="edit_product.php?id=<?= $fetch_product['p-id']; ?>">Edit</a>
 <button type="submit" name="delete" class="btn" onclick="return confirm('Do you really want to delete your products ?')">Delete</button>
-<a class="viewpath btn" href="read_product.php?post_id=<?= $fetch_product['p-id'];  ?>" >View</a>
+<a class="viewpath btn" href="view_product.php " > Go Back</a>
 
 </div>
 
@@ -118,5 +119,18 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 </div>
 </div>
 
+
+
+
+</div>
+
+
+
+
+
+
+
+
 </body>
 </html>
+

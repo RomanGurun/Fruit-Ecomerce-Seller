@@ -86,8 +86,9 @@ display:none;
 }
 .navbar{
     /* transition:all 0.7s ease-in; */
-height: 9rem;
-    width:100%;
+/* height: 9rem; */
+height: 11rem;
+width:100%;
 }
 #firstlogo{
     margin-left:-72%;
@@ -98,6 +99,7 @@ nav a{
     display: block;
 /* background:var(--green); */
 box-shadow:var(--box-shadow);
+font-size:23.3px;
     margin: 9px;
 }
 
@@ -136,7 +138,13 @@ header{
     cursor:pointer;
     font-size:28.5px;
 }
-
+#companyname{
+    color:black;
+    font-weight:bold;
+    font-size:20px;
+    display:inline-block;
+    text-decoration:none;
+}
 /* .header.scrolled{
     top:0;
     box-shadow: 0 5px 20px 0.1px rgba(0,0,0,0.1);
@@ -156,6 +164,7 @@ backdrop-filter:blur(20px);
 
 <header class="header">
 <a id="firstlogo"href=""><img id="logo" src="../sellerimage/ourlogo.jpg" alt="no-image" srcset="">
+<!-- <span id="companyname">FalfulKarobar</span> -->
 <!-- <i class="bx bx-list-plus" id="menu-btn"></i> -->
 
 </a>
