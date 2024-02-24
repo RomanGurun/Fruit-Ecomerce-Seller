@@ -55,7 +55,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 ?>
 <form action="" method="post">
     <div class="farmerpbox">
-        <span class="framerpstatus"><?= $fetch_product['p-status']; ?></span>
+        <span class="farmerpstatus"><?= $fetch_product['p-status']; ?></span>
         <span class="price">$<?= $fetch_product['p-price'] ?>/-</span>
 <input type="hidden" value="<?= $fetch_product['p-id'];  ?>">  
 
