@@ -2,7 +2,17 @@
 include 'navbar.php';
 include '../component/dbconnect.php';
 ?>
+<?php
+if(isset($_POST['delete'])){
 
+    $product=$_POST['productId'];
+   $delete_product= $conn->prepare("DELETE FROM `products` WHERE `products`.`p-id` = ?");
+$delete_product->execute([$product]);
+
+}
+
+
+?>
 
 
 
@@ -22,7 +32,7 @@ include '../component/dbconnect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Product Page</title>
 <!-- <link rel="stylesheet" href="../style/two.css"> -->
-<link rel="stylesheet" href="../style/original.css">
+<link rel="stylesheet" href="../style/originals.css">
 </head>
 <body>
 
@@ -55,20 +65,22 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 ?>
 <form action="" method="post">
     <div class="farmerpbox">
-        <span class="farmerpstatus"><?= $fetch_product['p-status']; ?></span>
+        <span class="farmerpstatus" style="<?php if($fetch_product['p-status']=="deactive"){
+            echo"color:red "; } ?> " >  <?= $fetch_product['p-status']; ?>  </span>
+
         <span class="price">$<?= $fetch_product['p-price'] ?>/-</span>
-<input type="hidden" value="<?= $fetch_product['p-id'];  ?>">  
+<input type="hidden" name="productId" value="<?= $fetch_product['p-id'];  ?>">  
 
 <div class="farmerpimage">
 <img class="Ornamentimage"src="../img/<?= $fetch_product['p-image']; ?>" alt="">
 </div>
-<div class="farmermessage">
-    <?= $fetch_product['p-detail']?>
+<div class="farmerproductname">
+    <?= $fetch_product['p-name']?>
 </div>
 
 <div class="farmerEDRbox">
 <a class="btn" href="edit_product.php?id=<?= $fetch_product['p-id']; ?>">Edit</a>
-<button type="submit" name="delete" class="btn">Delete</button>
+<button type="submit" name="delete" class="btn" onclick="return confirm('Do you really want to delete your products ?')">Delete</button>
 <button type="submit" name="" class="btn">View</button>
 <a href="read_product.php?id=<?= $fetch_product['p-id'];  ?>"></a>
 </div>
