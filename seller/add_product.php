@@ -97,7 +97,7 @@ if(isset($_POST['draft'])){
 
 <section>
     <form action="" method="post" enctype="multipart/form-data">
-        <h1>ADD PRODUCTS</h1>
+        <h1 class="h1Addproduct">ADD PRODUCTS</h1>
 
         <div class="input-field">
 

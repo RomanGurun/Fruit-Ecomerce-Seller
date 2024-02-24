@@ -112,11 +112,13 @@ margin-top: 10px;
 
     h1 {
         font-size: 25px;
-        /* text-align: center; */
+        text-align: center;
         color:black;
         margin-right: 56px;
     }
-
+.h1Addproduct{
+    text-align: center;
+}
     .btn:hover {
         background-color: var(--selenagreen);
     }
