@@ -1,4 +1,4 @@
-/*================================================ ADD PRODUCT CSSS  START================================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -154,6 +154,8 @@ padding:10px;
         line-height: 20px;
         font-size: 20px;
     }
+  
+  
     textarea{
         width: 100%;
         outline: none;
@@ -297,6 +299,7 @@ font-size: 23px;
     }
 
 }
+
 .viewpath{
     color:black;
 }
