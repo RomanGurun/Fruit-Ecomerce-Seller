@@ -51,7 +51,7 @@ color:black;
 text-decoration:none;
 }
 
-nav a:hover{
+nav a span:hover{
     cursor:pointer;
     color:var(--selenagreen);
 }
@@ -87,7 +87,7 @@ display:none;
 .navbar{
     /* transition:all 0.7s ease-in; */
 /* height: 9rem; */
-height: 11rem;
+height: 13rem;
 width:100%;
 }
 #firstlogo{
@@ -101,7 +101,18 @@ nav a{
 box-shadow:var(--box-shadow);
 font-size:23.3px;
     margin: 9px;
+    padding:10px;
 }
+nav a span{
+    color:green;
+    transition:2.0s border-bottom;
+
+}
+nav a span:hover{
+    color:green;
+    border-bottom:solid 2px green;
+}
+
 
 header{
     /* justify-content:space-between; */
@@ -172,10 +183,10 @@ backdrop-filter:blur(20px);
 
 <nav class="navbar active">
 
-<a href="dashboard.php">Dashboard</a>
-<a href="add_product.php">Add product</a>
-<a href="view_product.php">view product</a>
-<a href="">accounts</a>
+<a href="dashboard.php"><span>Dashboard</span></a>
+<a href="add_product.php"><span>Add product</span></a>
+<a href="view_product.php"><span>view product</span></a>
+<a href=""><span>accounts</span></a>
 </nav>
 
 <div class="icon">
