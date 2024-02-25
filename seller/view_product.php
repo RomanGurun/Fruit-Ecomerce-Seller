@@ -65,7 +65,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 ?>
 <form action="" method="post">
     <div class="farmerpbox">
-        <span class="farmerpstatus" style="<?php if($fetch_product['p-status']=="deactive"){
+        <span class="farmerpstatus" style="<?php if($fetch_product['p-status']=="deactive" || $fetch_product['p-status']=="Deactive"){
             echo"color:red "; } ?> " >  <?= $fetch_product['p-status']; ?>  </span>
 
         <span class="price">$<?= $fetch_product['p-price'] ?>/-</span>
