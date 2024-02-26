@@ -28,7 +28,12 @@ $delete_product->execute([$product]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../style/one.css">
-    <link rel="stylesheet" href="../style/originals.css">
+    <link rel="stylesheet" href="../style/original.css">
+    <style>
+        .readprice{
+            margin-left:21rem !important ;
+        }
+    </style>
 </head>
 <body>
     
@@ -65,7 +70,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
         <span class="farmerpstatus" style="<?php if($fetch_product['p-status']=="deactive"){
             echo"color:red "; } ?> " >  <?= $fetch_product['p-status']; ?>  </span>
 
-        <span class="price">$<?= $fetch_product['p-price'] ?>/-</span>
+        <span class="price readprice">$<?= $fetch_product['p-price'] ?>/-</span>
 <input type="hidden" name="productId" value="<?= $fetch_product['p-id'];  ?>">  
 
 <div class="farmerpimage">

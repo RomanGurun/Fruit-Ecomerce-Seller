@@ -187,7 +187,7 @@ width:22%;
 
 <div class="input-field">
 <label for="">user password</label>
-<input type="password" name="password" maxlength="20" placeholder="Enter your password" required>
+<input type="password" name="password" maxlength="20"placeholder="Enter your password" required>
 </div>
 
 <button type="submit" name="register" class="btn">login now</button>

@@ -60,7 +60,7 @@ echo"<script> alert('Product Updated Successfully')</script>";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product Page</title>
 <!-- <link rel="stylesheet" href="../style/two.css"> -->
-<link rel="stylesheet" href="../style/originals.css">
+<link rel="stylesheet" href="../style/original.css">
 <style>
     
     /*================================================ EDIT PRODUCT CSSS START================================================ */

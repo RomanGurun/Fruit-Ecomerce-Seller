@@ -32,7 +32,7 @@ $delete_product->execute([$product]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Product Page</title>
 <!-- <link rel="stylesheet" href="../style/two.css"> -->
-<link rel="stylesheet" href="../style/originals.css">
+<link rel="stylesheet" href="../style/original.css">
 </head>
 <body>
 
@@ -68,7 +68,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
         <span class="farmerpstatus" style="<?php if($fetch_product['p-status']=="deactive" || $fetch_product['p-status']=="Deactive"){
             echo"color:red "; } ?> " >  <?= $fetch_product['p-status']; ?>  </span>
 
-        <span class="price">$<?= $fetch_product['p-price'] ?>/-</span>
+        <span class="price">Rs. <?= $fetch_product['p-price'] ?>/-</span>
 <input type="hidden" name="productId" value="<?= $fetch_product['p-id'];  ?>">  
 
 <div class="farmerpimage">
@@ -100,12 +100,19 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 
 
 <?php
-
+//================================================ PHP INDSDE XA HTML ELEMNET ================================================
 }
 
 }else{
-    // <div class="boxxxxxxx"></div>
+    echo' <div class="NoProductBox">
+    <h1 id="Productheading">NO Product Added Yet !</h1>
+    <a class="addpath btn" href="add_product.php" >Add Product</a>
+    </div>';
+   
 }
+
+//================================================ PHP INDSDE XA HTML ELEMNET ================================================
+
 
 ?>
 
@@ -116,6 +123,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
     
 </section>   
 </div>
+
 </div>
 
 </body>

@@ -114,7 +114,7 @@ margin-top: 10px;
         font-size: 25px;
         text-align: center;
         color:black;
-        margin-right: 56px;
+        /* margin-right: 56px; */
     }
 .h1Addproduct{
     text-align: center;
@@ -190,6 +190,8 @@ padding:10px;
         color: red;
     }
 
+    /*======================================== MEDAI QUERY ======================================================= */
+
     @media(max-width:991px) {
         .main {
             margin: 2rem;
@@ -214,12 +216,16 @@ padding:10px;
         }
 
             #AllProduct .farmerpbox .price{
-                margin-left: 4rem !important;
+                margin-left: 3rem !important;
             }
         
-
+            .NoProductBox{
+margin-left:0rem !important;
 
     }
+    }
+/*======================================== MEDAI QUERY ======================================================= */
+
 
     /*================================================ ADD PRODUCT CSSS END================================================ */
     /*================================================ VIEW PRODUCT CSSS SATRT================================================ */
@@ -269,7 +275,7 @@ padding:10px;
     padding: 3px 12px;
     margin-top: 13px;
     margin-bottom: 38px;
-    margin-left: 13rem;
+    margin-left: 10rem;
     text-transform:capitalize;
     font-weight:bold;
     color:var(--green); 
@@ -292,17 +298,55 @@ font-size: 23px;
 }
 
 
+/*======================================== MEDAI QUERY ======================================================= */
 
 @media(max-width:500px){
     #AllProduct .farmerpbox .price{
-        margin-left: 4rem !important;
+        margin-left: 3rem !important;
     }
 
+    .NoProductBox{
+        margin-left:2rem !important;
+        
+            }
+
 }
+/*======================================== MEDAI QUERY ======================================================= */
 
 .viewpath{
     color:black;
 }
+
+.NoProductBox{
+
+    background-color: #87a243;
+    padding: 20px;
+    display: flex;
+    /* margin-left: 5rem; */
+
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   width:100%;
+
+
+
+}
+.addpath{
+    display: block;
+margin-top: 22px;
+background-color: var(--light-green);
+font-size: 19px;
+}
+
+#Productheading{
+    margin-top:1rem;
+    text-align:center;
+margin-right: 0rem;
+color:#fff;
+}
+    
 
     /*================================================ VIEW PRODUCT CSSS END================================================ */
     
