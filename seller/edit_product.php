@@ -105,7 +105,7 @@ echo"<script> alert('Product Updated Successfully')</script>";
         <div class="input-field">
         <label for="">Product satus <sup>*</sup></label>
  <select name="status" id="ProductStatusUpdate">
- <option value=""><?= $fetch_product['p-status']; ?></option>
+ <option value="<?= $fetch_product['p-status']; ?>"><?= $fetch_product['p-status']; ?></option>
  <option value=""></option>
  <option value="Active">active</option>
 <option value="Deactive">deactive</option>
