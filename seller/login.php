@@ -190,7 +190,7 @@ width:22%;
 <input type="password" name="password" maxlength="20"placeholder="Enter your password" required>
 </div>
 
-<button type="submit" name="register" class="btn">login now</button>
+<button type="submit" name="login" class="btn">login now</button>
 <p>do not have an account ?<a href="register.php"> register now</a></p>
 
 </form>
@@ -204,7 +204,9 @@ width:22%;
 <?php
 include '../component/dbconnect.php';
 
-if(isset($_POST['register'])){
+session_start();
+
+if(isset($_POST['login'])){
 $email=$_POST['email'];
 $password=$_POST['password'];
 
@@ -218,12 +220,18 @@ if($checkemail->rowCount()>0){
 
     $fetchselleremail= $checkemail->fetch(PDO::FETCH_ASSOC);
     $emailresult=$fetchselleremail['s-password'];
-
+   
     if($emailresult==$password){
-;
+        $_SESSION['id']=$fetchselleremail['s-id'];
+
+        
     //=================================== header use gare below script not work why =============================================
     echo'<script>alert("signin successfully."); </script>';        
         header("location:dashboard.php");
+        
+
+//   $_SESSION['name']=$fetchselleremail['s-name'];
+//  $_SESSION['email']=$fetchselleremail['s-email'];
 
 
     }else{

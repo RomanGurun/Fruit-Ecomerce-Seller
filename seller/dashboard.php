@@ -1,5 +1,21 @@
 <?php
 include 'navbar.php';
+include '../component/dbconnect.php';
+
+session_start();
+$sellerid= isset($_SESSION['id'])?$_SESSION['id'] :null;
+
+if(!isset($sellerid)){
+       
+    header("location:login.php");
+exit;
+}
+
+echo"The seller id is".$sellerid;
+echo "<a href='logout.php'>LOGOUT</a>";
+
+
+
 
 
 ?>
