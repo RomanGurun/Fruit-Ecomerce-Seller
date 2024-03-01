@@ -2,17 +2,28 @@
 include 'navbar.php';
 include '../component/dbconnect.php';
 
-session_start();
-$sellerid= isset($_SESSION['id'])?$_SESSION['id'] :null;
-
-if(!isset($sellerid)){
+ session_start();
+ $sellerid= isset($_SESSION['id'])?$_SESSION['id'] :null;
+ if(!isset($sellerid)){
        
     header("location:login.php");
 exit;
 }
 
-echo"The seller id is".$sellerid;
-echo "<a href='logout.php'>LOGOUT</a>";
+
+
+$seller=$conn->prepare("SELECT * FROM `seller` WHERE `s-id`=? ");
+$seller->execute([$sellerid]);
+if($seller->rowCount()>0){
+
+    echo"The seller id is".$sellerid;
+    echo "<a href='logout.php'>LOGOUT</a>";
+
+}
+
+
+
+
 
 
 

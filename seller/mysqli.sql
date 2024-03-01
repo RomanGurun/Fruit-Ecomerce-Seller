@@ -16,3 +16,9 @@ SELECT * FROM `seller` WHERE email =?
 CREATE TABLE `fruitsellersiteecommerce`.`products` (`p-id` INT(20) NOT NULL AUTO_INCREMENT , `p-name` VARCHAR(50) NOT NULL , `p-price` INT(25) NOT NULL , `p-image` VARCHAR(25) NOT NULL , `p-detail` VARCHAR(250) NOT NULL , `p-status` VARCHAR(20) NOT NULL , PRIMARY KEY (`p-id`)) ENGINE = InnoDB;
 
 
+--3.. ADDED s-id column as a row..... 
+ALTER TABLE `products` ADD `s-id` INT(20) NOT NULL AFTER `p-status`;
+
+
+------ Making s-id on Product as a Foreign Key
+ALTER TABLE `products` ADD FOREIGN KEY (`s-id`) REFERENCES `seller`(`s-id`) ON DELETE CASCADE ON UPDATE CASCADE;

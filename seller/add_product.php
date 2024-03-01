@@ -3,6 +3,10 @@ include 'navbar.php';
 include '../component/dbconnect.php';
 ?>
 <?php
+
+session_start();
+$sellerid=$_SESSION['id'];
+
 if(isset($_POST['publish'])){
     $productname = $_POST['name'];
     $productprice = $_POST['price'];
@@ -13,7 +17,7 @@ if(isset($_POST['publish'])){
     $status = 'active';
 
     // Prepare the SQL statement with placeholders
-    $stmt = $conn->prepare("INSERT INTO `products` (`p-name`, `p-price`, `p-image`, `p-detail`, `p-status`) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO `products` (`p-name`, `p-price`, `p-image`, `p-detail`, `p-status`,`s-id`) VALUES (?, ?, ?, ?, ?,?)");
 
     // Bind parameters to the placeholders and execute the statement
     $stmt->bindParam(1, $productname);
@@ -21,8 +25,9 @@ if(isset($_POST['publish'])){
     $stmt->bindParam(3, $image);
     $stmt->bindParam(4, $productdetail);
     $stmt->bindParam(5, $status);
+    $stmt->bindParam(6,$sellerid);
 
-       // Execute the prepared statement
+    // Execute the prepared statement
        if ($stmt->execute()) {
         // Upload the image file to the specified folder
         move_uploaded_file($image_tmp_name, $image_folder);
