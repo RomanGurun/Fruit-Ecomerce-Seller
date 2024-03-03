@@ -22,3 +22,13 @@ ALTER TABLE `products` ADD `s-id` INT(20) NOT NULL AFTER `p-status`;
 
 ------ Making s-id on Product as a Foreign Key
 ALTER TABLE `products` ADD FOREIGN KEY (`s-id`) REFERENCES `seller`(`s-id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+-- disabled property in input tag in a ADMIN PANEL 
+
+-- Admin table
+
+CREATE TABLE `fruitsellersiteecommerce`.`admin` (`id` INT(20) NOT NULL AUTO_INCREMENT , `useremail` VARCHAR(50) NOT NULL , `password` VARCHAR(50) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+-- admin DML -Insert
+INSERT INTO `admin` (`id`, `useremail`, `password`) VALUES ('1', 'fruitadmin097@gmail.com', 'fruit2097');

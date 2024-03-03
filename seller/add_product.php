@@ -14,8 +14,11 @@ if(isset($_POST['publish'])){
     $image = $_FILES['image']['name'];
     $image_tmp_name = $_FILES['image']['tmp_name'];
     $image_folder = "../img/".$image;
-    $status = 'active';
+    $status = 'pending';
 
+    // $status = 'active';
+
+    
     // Prepare the SQL statement with placeholders
     $stmt = $conn->prepare("INSERT INTO `products` (`p-name`, `p-price`, `p-image`, `p-detail`, `p-status`,`s-id`) VALUES (?, ?, ?, ?, ?,?)");
 

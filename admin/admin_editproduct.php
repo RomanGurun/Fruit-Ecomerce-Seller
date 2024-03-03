@@ -28,21 +28,22 @@ $delete_product->execute([$product]);
 <?php
 if(isset($_POST['update'])){
 
-$price=$_POST['price'];
-$name=$_POST['name'];
+// $price=$_POST['price'];
+// $name=$_POST['name'];
 $status=$_POST['status'];
-$detail=$_POST['detail'];
+// $detail=$_POST['detail'];
 
-$image = $_FILES['image']['name'];
-$image_tmp_name = $_FILES['image']['tmp_name'];
-$image_folder = "../img/".$image;
-move_uploaded_file($image_tmp_name, $image_folder);
+// $image = $_FILES['image']['name'];
+// $image_tmp_name = $_FILES['image']['tmp_name'];
+// $image_folder = "../img/".$image;
+// move_uploaded_file($image_tmp_name, $image_folder);
      
 
 // $updateproduct=$conn->prepare("UPDATE `products` SET `p-name`=? `p-price` = ? `p-image`=? `p-detail` = ? `p-status`=  ? WHERE `products`.`p-id` = ?;");
-$updateproduct = $conn->prepare("UPDATE `products` SET `p-name`=?, `p-price`=?, `p-image`=?, `p-detail`=?, `p-status`=? WHERE `products`.`p-id` = ?");
+// $updateproduct = $conn->prepare("UPDATE `products` SET `p-name`=?, `p-price`=?, `p-image`=?, `p-detail`=?, `p-status`=? WHERE `products`.`p-id` = ?");
+$updateproduct = $conn->prepare("UPDATE `products` SET `p-status`=? WHERE `products`.`p-id` = ?");
 
-$updateproduct->execute([$name,$price,$image,$detail,$status,$getpid]);
+$updateproduct->execute([$status,$getpid]);
 
 echo"<script> alert('Product Updated Successfully')</script>";
 
@@ -103,46 +104,48 @@ echo"<script> alert('Product Updated Successfully')</script>";
     <form action="" method="post" enctype="multipart/form-data">
         <h1 class="h1Addproduct">EDIT PRODUCTS</h1>
         <div class="input-field">
+
+        <span class="seller-id">Person id is <?= $fetch_product['s-id'] ?></span>
+
         <label for="">Product satus <sup>*</sup></label>
- <select name="status" id="ProductStatusUpdate" disabled>
+ <select name="status" id="ProductStatusUpdate">
  <option value="<?= $fetch_product['p-status']; ?>"><?= $fetch_product['p-status']; ?></option>
  <option value=""></option>
- <!-- <option value="Active">active</option> -->
-<option value="Deactive">deactive</option>
+ <option value="Active">active</option>
+<!-- <option value="Deactive">deactive</option> -->
 
  </select>
 
     </div>
-
         <div class="input-field">
         <label for="">Product Name</label>
       
-            <input type="text" name="name" maxlength="20" placeholder="add products name" value="<?= $fetch_product['p-name'] ?>" required>
+            <input type="text" name="name" maxlength="20" placeholder="add products name" value="<?= $fetch_product['p-name'] ?>" required disabled>
         </div>
 
 
         <div class="input-field">
             <label for="">Product Price</label>
-            <input type="text" value="<?= $fetch_product['p-price'] ?>" name="price" maxlength="26" placeholder="add products price" required>
+            <input type="text" value="<?= $fetch_product['p-price'] ?>" name="price" maxlength="26" placeholder="add products price" required disabled>
         </div>
 
         <div class="input-field">
             <label for="">product detail</label>
-        <textarea name="detail" value=""id="" cols="30" rows="10" placeholder="write product description" required><?= $fetch_product['p-detail'] ?></textarea>
+        <textarea name="detail" value=""id="" cols="30" rows="10" placeholder="write product description" disabled required><?= $fetch_product['p-detail'] ?></textarea>
         </div>
 
         <div class="input-field">
             <label for="">product image <sup>*</sup></label>
-            <input type="file" name="image" accept="image/*" value="<?= $fetch_product['p-image'] ?>" required>
+            <input type="file" name="image" accept="image/*" value="<?= $fetch_product['p-image'] ?>" required disabled>
         </div>
 <div class="input-field">
-<img class="Ornamentimage" src="../img/<?= $fetch_product['p-image'] ?> " alt="">
+<img class="Ornamentimage" src="../img/<?= $fetch_product['p-image'] ?> " alt="" disabled>
 </div>
 
 
         <div class="farmerEDRbox">
 <button type="submit" name="update" class="btn" >Update</button>
-<a class="viewpath btn" href="view_product.php">Go Back</a>
+<a class="viewpath btn" href="admin_viewproduct.php">Go Back</a>
 
 <button type="submit" name="delete" class="btn" onclick="return confirm('Do you really want to delete your products ?')">Delete</button>
 
