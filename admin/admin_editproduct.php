@@ -8,11 +8,30 @@ $getpid=$_GET['id'];
 $editproduct =$conn->prepare("SELECT * FROM `products` WHERE `p-id`=?");
 $editproduct->execute([$getpid]);
 
+$getsname=$_GET['sname'];
+
 // if($editproduct->rowCount()>0){
 
 $fetch_product=$editproduct->fetch(PDO::FETCH_ASSOC);
 
 // }
+
+
+
+//==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
+$select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-name` = ?");
+$select_from_foreign->execute([$getsname]);
+if ($select_from_foreign) {
+    $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
+    // Your code to use $fetch_foreign
+} else {
+    // Handle the case when the query fails
+    echo "Error: Unable to fetch seller information.";
+}
+
+//==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
+
+
 
 if(isset($_POST['delete'])){
 
@@ -105,12 +124,12 @@ echo"<script> alert('Product Updated Successfully')</script>";
         <h1 class="h1Addproduct">EDIT PRODUCTS</h1>
         <div class="input-field">
 
-        <span class="seller-id">Person id is <?= $fetch_product['s-id'] ?></span>
+        <span class="seller-id">Person id is <?= $fetch_product['s-id'] ?> and seller-name is <?= $fetch_foreign['s-name'] ?> </span>
+
 
         <label for="">Product satus <sup>*</sup></label>
  <select name="status" id="ProductStatusUpdate">
  <option value="<?= $fetch_product['p-status']; ?>"><?= $fetch_product['p-status']; ?></option>
- <option value=""></option>
  <option value="Active">active</option>
 <!-- <option value="Deactive">deactive</option> -->
 

@@ -30,7 +30,6 @@ if(isset($_POST['update'])){
 
 $price=$_POST['price'];
 $name=$_POST['name'];
-$status=$_POST['status'];
 $detail=$_POST['detail'];
 
 $image = $_FILES['image']['name'];
@@ -40,9 +39,9 @@ move_uploaded_file($image_tmp_name, $image_folder);
      
 
 // $updateproduct=$conn->prepare("UPDATE `products` SET `p-name`=? `p-price` = ? `p-image`=? `p-detail` = ? `p-status`=  ? WHERE `products`.`p-id` = ?;");
-$updateproduct = $conn->prepare("UPDATE `products` SET `p-name`=?, `p-price`=?, `p-image`=?, `p-detail`=?, `p-status`=? WHERE `products`.`p-id` = ?");
+$updateproduct = $conn->prepare("UPDATE `products` SET `p-name`=?, `p-price`=?, `p-image`=?, `p-detail`=? WHERE `products`.`p-id` = ?");
 
-$updateproduct->execute([$name,$price,$image,$detail,$status,$getpid]);
+$updateproduct->execute([$name,$price,$image,$detail,$getpid]);
 
 echo"<script> alert('Product Updated Successfully')</script>";
 
@@ -106,7 +105,6 @@ echo"<script> alert('Product Updated Successfully')</script>";
         <label for="">Product satus <sup>*</sup></label>
  <select name="status" id="ProductStatusUpdate" disabled>
  <option value="<?= $fetch_product['p-status']; ?>"><?= $fetch_product['p-status']; ?></option>
- <option value=""></option>
  <!-- <option value="Active">active</option> -->
 <option value="Deactive">deactive</option>
 

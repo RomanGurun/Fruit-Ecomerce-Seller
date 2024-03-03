@@ -58,6 +58,15 @@ $view_sellerid= isset($_SESSION['id'])?$_SESSION['id'] :null;
     <div id="AllProduct">        
           
           <?php
+//==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
+$select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-id` = ?");
+$select_from_foreign->execute([$view_sellerid]);
+$fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
+
+
+//==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
+
+
 
 $select_product=$conn->prepare("SELECT * FROM `products`");
 $select_product->execute();
@@ -73,7 +82,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
             echo"color:red "; } ?> " >  <?= $fetch_product['p-status']; ?>  </span>
 
         <span class="price">Rs. <?= $fetch_product['p-price'] ?>/-</span>
-        <span class="seller-id">Person id is <?= $fetch_product['s-id'] ?></span>
+        <span class="seller-id">Person id is <?= $fetch_product['s-id'] ?> and seller-name is <?= $fetch_foreign['s-name'] ?> </span>
 <input type="hidden" name="productId" value="<?= $fetch_product['p-id'];  ?>">  
 
 <div class="farmerpimage">
@@ -84,7 +93,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 </div>
 
 <div class="farmerEDRbox">
-<a class="btn" href="admin_editproduct.php?id=<?= $fetch_product['p-id']; ?>">Edit</a>
+<a class="btn" href="admin_editproduct.php?id=<?= $fetch_product['p-id']; ?>?sname=<?= $fetch_foreign['s-name'] ?> ">Edit</a>
 <button type="submit" name="delete" class="btn" onclick="return confirm('Do you really want to delete your products ?')">Delete</button>
 <a class="viewpath btn" href="read_product.php?post_id=<?= $fetch_product['p-id'];  ?>" >View</a>
 
