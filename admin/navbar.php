@@ -183,7 +183,7 @@ backdrop-filter:blur(20px);
 
 <nav class="navbar active">
 
-<a href="dashboard.php"><span>Dashboard</span></a>
+<a href="admin_dashboard.php"><span>Dashboard</span></a>
 
 <!-- <a href="add_product.php"><span>Add product</span></a> -->
 

@@ -8,7 +8,7 @@ $getpid=$_GET['id'];
 $editproduct =$conn->prepare("SELECT * FROM `products` WHERE `p-id`=?");
 $editproduct->execute([$getpid]);
 
-$getsname=$_GET['sname'];
+$getsid=$_GET['sid'];
 
 // if($editproduct->rowCount()>0){
 
@@ -19,8 +19,8 @@ $fetch_product=$editproduct->fetch(PDO::FETCH_ASSOC);
 
 
 //==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
-$select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-name` = ?");
-$select_from_foreign->execute([$getsname]);
+$select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-id` = ?");
+$select_from_foreign->execute([$getsid]);
 if ($select_from_foreign) {
     $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
     // Your code to use $fetch_foreign

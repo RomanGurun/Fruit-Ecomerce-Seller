@@ -58,9 +58,28 @@ $view_sellerid= isset($_SESSION['id'])?$_SESSION['id'] :null;
     <div id="AllProduct">        
           
           <?php
+
+
+
+$select_product=$conn->prepare("SELECT * FROM `products`");
+$select_product->execute();
+
+
+
+
+
+
+
+if($select_product->rowCount()>0){
+
+while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
+{
+
+
 //==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
+$sellerid=$fetch_product['s-id'];
 $select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-id` = ?");
-$select_from_foreign->execute([$view_sellerid]);
+$select_from_foreign->execute([$sellerid]);
 $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
 
 
@@ -68,12 +87,10 @@ $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
 
 
 
-$select_product=$conn->prepare("SELECT * FROM `products`");
-$select_product->execute();
-if($select_product->rowCount()>0){
 
-while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
-{
+
+
+
 
 ?>
 <form action="" method="post">
@@ -93,9 +110,9 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 </div>
 
 <div class="farmerEDRbox">
-<a class="btn" href="admin_editproduct.php?id=<?= $fetch_product['p-id']; ?>?sname=<?= $fetch_foreign['s-name'] ?> ">Edit</a>
+<a class="btn" href="admin_editproduct.php?id=<?= $fetch_product['p-id']; ?>?sid=<?= $fetch_foreign['s-id'] ?> ">Edit</a>
 <button type="submit" name="delete" class="btn" onclick="return confirm('Do you really want to delete your products ?')">Delete</button>
-<a class="viewpath btn" href="read_product.php?post_id=<?= $fetch_product['p-id'];  ?>" >View</a>
+<a class="viewpath btn" href="admin_readproduct.php?post_id=<?= $fetch_product['p-id'];?> ?sid=<?= $fetch_foreign['s-id']; ?>" >View</a>
 
 </div>
 
