@@ -23,13 +23,32 @@ if($admin->rowCount()>0){
 
 
 
-
-
-
-
-
-
 ?>
+
+<style>
+.admin-container{
+border:solid 2px red;
+
+
+}
+
+.admin-seller{
+    display:flex;
+    flex-wrap:wrap;
+margin:20px;
+    border:solid 2px black;
+
+}
+.as-box
+{ display:block;
+    width:100%;
+    border:solid 2px red;
+margin:10px;
+}
+
+</style>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,6 +68,55 @@ if($admin->rowCount()>0){
 
 <a href="dashboard.php">Home</a><span>Dashboard</span>
 </div>
+
+
+<!-- // ======================================== SELLER ============================== -->
+<?php
+
+
+$seller=$conn->prepare("SELECT * FROM `seller`");
+$seller->execute();
+
+if($seller->rowCount()>0)
+{
+
+
+
+    while($fetchseller = $seller->fetch(PDO::FETCH_ASSOC))
+{
+
+?>
+
+
+    <div class="admin-container">
+    <div class="admin-seller">
+    
+    
+    <div class="as-box">
+    <?= $fetchseller['s-name'] ?>
+    
+    </div>
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    </div>
+<?php
+}
+
+}
+
+?>
+<!-- // ======================================== SELLER ============================== -->
+
+
+
 </div>
 
 
