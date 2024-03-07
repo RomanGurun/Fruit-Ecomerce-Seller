@@ -105,7 +105,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 </div>
 
 <div class="farmerEDRbox">
-<button type="submit" name="delete" class="btn" onclick="return confirm('Do you really want to delete your products ?')">Delete</button>
+<button type="submit" name="delete" class="btn" onclick="confirmMessage() ">Delete</button>
 <a class="viewpath btn" href="admin_viewproduct.php " > Go Back</a>
 
 </div>
@@ -115,6 +115,21 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 </div>
 
 
+   
+<script>
+
+function confirmMessage(){
+
+let a =prompt("Do you really want to delete your products?If 'Yes' then TYPE 'CONFIRM'. ");
+if(a!=='CONFIRM'){
+event.preventDefault();
+
+
+
+}
+}
+
+</script>
 
 
 

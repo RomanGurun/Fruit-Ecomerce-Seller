@@ -91,12 +91,12 @@ if($seller->rowCount()>0)
     <div class="admin-container">
     <div class="admin-seller">
     
-    
+<form action="" method="post">   
     <div class="as-box">
     <?= $fetchseller['s-name'] ?>
     
     </div>
-    
+    </form> 
     
     
     

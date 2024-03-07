@@ -111,7 +111,12 @@ $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
 
 <div class="farmerEDRbox">
 <a class="btn" href="admin_editproduct.php?id=<?= $fetch_product['p-id']; ?>?sid=<?= $fetch_foreign['s-id'] ?> ">Edit</a>
-<button type="submit" name="delete" class="btn" onclick="return confirm('Do you really want to delete your products ?')">Delete</button>
+<!-- <button type="submit" name="delete" class="btn" onclick="let a=prompt('Do you really want to delete your products ?');
+if(a!=='CONFIRM'){ exit;}
+">Delete</button> -->
+<button type="submit" name="delete" class="btn" onclick="confirmDelete()">Delete</button>
+
+
 <a class="viewpath btn" href="admin_readproduct.php?post_id=<?= $fetch_product['p-id'];?> ?sid=<?= $fetch_foreign['s-id']; ?>" >View</a>
 
 </div>
@@ -156,6 +161,15 @@ $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
 </div>
 
 </div>
+
+<script>
+function confirmDelete() {
+    let a = prompt('Do you really want to delete your products ? IF "YES" then type "CONFIRM" ');
+    if (a !== 'CONFIRM') {
+        event.preventDefault(); // Prevent form submission
+    }
+}
+</script>
 
 </body>
 </html>

@@ -8,7 +8,7 @@ $getpid=$_GET['id'];
 $editproduct =$conn->prepare("SELECT * FROM `products` WHERE `p-id`=?");
 $editproduct->execute([$getpid]);
 
-$getsid=$_GET['sid'];
+// $getsid=$_GET['sid'];
 
 // if($editproduct->rowCount()>0){
 
@@ -19,15 +19,15 @@ $fetch_product=$editproduct->fetch(PDO::FETCH_ASSOC);
 
 
 //==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
-$select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-id` = ?");
-$select_from_foreign->execute([$getsid]);
-if ($select_from_foreign) {
-    $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
+// $select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-id` = ?");
+// $select_from_foreign->execute([$getsid]);
+// if ($select_from_foreign) {
+//     $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
     // Your code to use $fetch_foreign
-} else {
+// } else {
     // Handle the case when the query fails
-    echo "Error: Unable to fetch seller information.";
-}
+    // echo "Error: Unable to fetch seller information.";
+// }
 
 //==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
 
@@ -36,7 +36,10 @@ if ($select_from_foreign) {
 if(isset($_POST['delete'])){
 
     $product=$_POST['productId'];
-   $delete_product= $conn->prepare("DELETE FROM `products` WHERE `products`.`p-id` = ?");
+// it comes from a post request input tag hidden property 
+
+
+    $delete_product= $conn->prepare("DELETE FROM `products` WHERE `products`.`p-id` = ?");
 $delete_product->execute([$product]);
 
 }
@@ -123,8 +126,9 @@ echo"<script> alert('Product Updated Successfully')</script>";
     <form action="" method="post" enctype="multipart/form-data">
         <h1 class="h1Addproduct">EDIT PRODUCTS</h1>
         <div class="input-field">
+        <input type="hidden" name="productId" value="<?= $fetch_product['p-id'];  ?>">  
 
-        <span class="seller-id">Person id is <?= $fetch_product['s-id'] ?> and seller-name is <?= $fetch_foreign['s-name'] ?> </span>
+        <!-- <span class="seller-id">Person id is <?= $fetch_product['s-id'] ?> and seller-name is <?= $fetch_foreign['s-name'] ?> </span> -->
 
 
         <label for="">Product satus <sup>*</sup></label>
@@ -166,7 +170,7 @@ echo"<script> alert('Product Updated Successfully')</script>";
 <button type="submit" name="update" class="btn" >Update</button>
 <a class="viewpath btn" href="admin_viewproduct.php">Go Back</a>
 
-<button type="submit" name="delete" class="btn" onclick="return confirm('Do you really want to delete your products ?')">Delete</button>
+<button type="submit" name="delete" class="btn" onclick="confirmMessage()">Delete</button>
 
 </div>
 
@@ -178,7 +182,20 @@ echo"<script> alert('Product Updated Successfully')</script>";
 <!--============================ FORM ================================ -->
     
     
+<script>
 
+function confirmMessage(){
+
+let a =prompt("Do you really want to delete your products?If 'Yes' then TYPE 'CONFIRM'. ");
+if(a!=='CONFIRM'){
+event.preventDefault();
+
+
+
+}
+}
+
+</script>
 
     
 </section>   
