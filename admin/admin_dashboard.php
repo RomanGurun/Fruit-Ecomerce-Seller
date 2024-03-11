@@ -212,6 +212,17 @@ $result2=$product2->rowCount();
 // ==================PRODUCT ACTIVE ROWCOUNT PHP CODE ============================================================
 
 
+
+// ==================PRODUCT DEACTIVE ROWCOUNT PHP CODE ============================================================
+// $pvaluetwo="active";
+$product3=$conn->prepare("SELECT * FROM `products` WHERE `p-status` = ?");
+$product3->execute(["deactive"]);
+$result3=$product2->rowCount();
+// ==================PRODUCT DEACTIVE ROWCOUNT PHP CODE ============================================================
+
+
+
+
 ?>
 
     <div class="admins-box">
@@ -227,7 +238,7 @@ $result2=$product2->rowCount();
 
 <div class="admins-box">
     <div class="sellerinform"><?= $fetchpstatus?></div>
-    <div class="userinformation">Number of Deactive Products</div>
+    <div class="userinformation">Number of Pending Products</div>
     <a class="viewpath btn" href="admin_viewproduct.php" >View</a>
 
 </div>
@@ -236,6 +247,12 @@ $result2=$product2->rowCount();
     <div class="sellerinform"><?= $result2?></div>
     <div class="userinformation">Number of Active Products</div>
     <a class="viewpath btn" href="admin_viewproduct.php" >View</a>
+
+</div>
+<div class="admins-box">
+    <div class="sellerinform"><?= $result3?></div>
+    <div class="userinformation">Number of Deactive Products</div>
+    <a class="viewpath btn" href="admin_deactiveproduct.php" >View</a>
 
 </div>
 

@@ -55,7 +55,7 @@ if(isset($_POST['draft'])){
     $status = 'deactive';
 
     // Prepare the SQL statement with placeholders
-    $stmt = $conn->prepare("INSERT INTO `products` (`p-name`, `p-price`, `p-image`, `p-detail`, `p-status`) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO `products` (`p-name`, `p-price`, `p-image`, `p-detail`, `p-status`,`s-id`) VALUES (?, ?, ?, ?, ?,?)");
 
     // Bind parameters to the placeholders and execute the statement
     $stmt->bindParam(1, $productname);
@@ -63,7 +63,7 @@ if(isset($_POST['draft'])){
     $stmt->bindParam(3, $image);
     $stmt->bindParam(4, $productdetail);
     $stmt->bindParam(5, $status);
-
+    $stmt->bindParam(6,$sellerid);
        // Execute the prepared statement
        if ($stmt->execute()) {
         // Upload the image file to the specified folder
