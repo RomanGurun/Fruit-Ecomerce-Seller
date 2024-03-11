@@ -80,9 +80,8 @@ text-transform:capitalize;
 .userinformation{
     display:block;
     text-align:center;
-font-size:29px;
-color:#555;
-
+font-size:25px;
+color: var(--selenagreen);
 margin-bottom:23px;
 }
 #sellerimg{
@@ -94,18 +93,8 @@ margin-bottom:23px;
     display:block;
     margin-left:27px;
 }
-.sellerinform{
-    font-size:29px;
-    text-align:center;
-    display:block;
 
-}
-.admins-box{
 
-    margin-top:29px;
-
-box-shadow:var(--box-shadow);
-}
 
 </style>
 
@@ -183,63 +172,72 @@ box-shadow:var(--box-shadow);
     <div id="AllProduct">        
           
           <?php
-// ==================SELLER ROWCOUNT PHP CODE ============================================================
+
 $seller=$conn->prepare("SELECT * FROM `seller`");
 $seller->execute();
 
-$sellerval=$seller->rowCount();
-$fetchseller = $seller->fetch(PDO::FETCH_ASSOC);
-// ==================SELLER ROWCOUNT PHP CODE ============================================================
+if($seller->rowCount()>0)
+{
 
 
 
-
-// ==================PRODUCT PENDING ROWCOUNT PHP CODE ============================================================
-
-$pvalue="pending";
-$product=$conn->prepare("SELECT * FROM `products` WHERE `p-status`= ? ");
-$product->execute([$pvalue]);
-
-$fetchpstatus=$product->rowCount();
-// ==================PRODUCT PENDING ROWCOUNT PHP CODE ============================================================
-
-
-// ==================PRODUCT ACTIVE ROWCOUNT PHP CODE ============================================================
-// $pvaluetwo="active";
-$product2=$conn->prepare("SELECT * FROM `products` WHERE `p-status` = ?");
-$product2->execute(["active"]);
-$result2=$product2->rowCount();
-// ==================PRODUCT ACTIVE ROWCOUNT PHP CODE ============================================================
-
+    while($fetchseller = $seller->fetch(PDO::FETCH_ASSOC))
+{
 
 ?>
 
-    <div class="admins-box">
-        <div class="sellerinform"><?=$sellerval ?>  </div>
+<!-- $select_product=$conn->prepare("SELECT * FROM `products`"); -->
+<!-- $select_product->execute(); -->
+<form action="" method="post">
+    <div class="farmerpbox">
+<div class="userinformation">Seller Information</div>
+<input type="hidden" name="seller-id"value="<?=$fetchseller['s-id']  ?>">      
 
-<div class="userinformation">Registered Seller</div>
+<div class="farmerpimage">
+<img id="sellerimg"src="../img/<?= $fetchseller['s-profile']; ?>" alt="">
+</div>
 
+
+<div class="id">Id = <?= $fetchseller['s-id'] ?>
+
+    </div>
+
+        <span class="sname">Username :<?= $fetchseller['s-name'] ?> </span>
+        <span class="sname">Useremail :<?= $fetchseller['s-email'] ?> </span>
+ 
 <div class="farmerEDRbox">
-<a class="viewpath btn" href="admin_sellerread.php" >View</a>
-</div>
+<!-- <button type="submit" name="delete" class="btn" onclick="let a=prompt('Do you really want to delete your products ?');
+if(a!=='CONFIRM'){ exit;}
+">Delete</button> -->
+<button type="submit" name="delete" class="btn" onclick="confirmDelete()">Delete</button>
 
-</div>
 
-<div class="admins-box">
-    <div class="sellerinform"><?= $fetchpstatus?></div>
-    <div class="userinformation">Number of Deactive Products</div>
-    <a class="viewpath btn" href="admin_viewproduct.php" >View</a>
-
-</div>
-
-<div class="admins-box">
-    <div class="sellerinform"><?= $result2?></div>
-    <div class="userinformation">Number of Active Products</div>
-    <a class="viewpath btn" href="admin_viewproduct.php" >View</a>
+<a class="viewpath btn" href="admin_readproduct.php?post_id=<?= $fetch_product['p-id'];?> ?sid=<?= $fetch_foreign['s-id']; ?>" >Registered</a>
 
 </div>
 
 
+
+</div>
+</form>
+
+
+<?php
+//================================================ PHP INDSDE XA HTML ELEMNET ================================================
+}
+
+}else{
+    echo' <div class="NoProductBox">
+    <h1 id="Productheading">NO seller available Yet !</h1>
+    // <a class="addpath btn" href="add_product.php" >Add Product</a>
+    </div>';
+   
+}
+
+//================================================ PHP INDSDE XA HTML ELEMNET ================================================
+
+
+?>
 
 
 
@@ -255,6 +253,20 @@ $result2=$product2->rowCount();
 
 
 </div>
+
+<script>
+function confirmDelete() {
+    let a = prompt('Do you really want to delete this account ? IF "YES" then type "CONFIRM" ');
+    if (a !== 'CONFIRM') {
+        event.preventDefault(); // Prevent form submission
+    }
+}
+</script>
+
+
+
+
+
 
 
 </body>
