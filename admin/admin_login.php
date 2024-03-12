@@ -223,7 +223,7 @@ if($checkemail->rowCount()>0){
     $emailresult=$fetchselleremail['password'];
    
     if($emailresult==$password){
-        $_SESSION['id']=$fetchselleremail['id'];
+        $_SESSION['adminid']=$fetchselleremail['id'];
 
         
     //=================================== header use gare below script not work why =============================================

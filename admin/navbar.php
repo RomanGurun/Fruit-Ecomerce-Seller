@@ -189,6 +189,7 @@ backdrop-filter:blur(20px);
 
 <a href="admin_viewproduct.php"><span>view product</span></a>
 <a href=""><span>accounts</span></a>
+
 </nav>
 
 <div class="icon">
