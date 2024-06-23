@@ -203,7 +203,7 @@ width:22%;
 </body>
 </html>
 <?php
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 
 session_start();
 
@@ -212,7 +212,7 @@ $email=$_POST['email'];
 $password=$_POST['password'];
 
 
-$checkemail=$conn->prepare("SELECT * FROM `admin` WHERE `useremail` = ?");
+$checkemail=$conn->prepare("SELECT * FROM `headadmin` WHERE `useremail` = ?");
 $checkemail->execute([$email]);
 
 if($checkemail->rowCount()>0){

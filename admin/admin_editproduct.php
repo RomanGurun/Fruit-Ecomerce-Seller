@@ -1,11 +1,11 @@
 <?php
 include 'navbar.php';
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 ?>
 <?php
 
 $getpid=$_GET['id'];
-$editproduct =$conn->prepare("SELECT * FROM `products` WHERE `p-id`=?");
+$editproduct =$conn->prepare("SELECT * FROM `sellerproducts` WHERE `p-id`=?");
 $editproduct->execute([$getpid]);
 
 // $getsid=$_GET['sid'];
@@ -39,7 +39,7 @@ if(isset($_POST['delete'])){
 // it comes from a post request input tag hidden property 
 
 
-    $delete_product= $conn->prepare("DELETE FROM `products` WHERE `products`.`p-id` = ?");
+    $delete_product= $conn->prepare("DELETE FROM `sellerproducts` WHERE `sellerproducts`.`p-id` = ?");
 $delete_product->execute([$product]);
 
 }
@@ -63,7 +63,7 @@ $status=$_POST['status'];
 
 // $updateproduct=$conn->prepare("UPDATE `products` SET `p-name`=? `p-price` = ? `p-image`=? `p-detail` = ? `p-status`=  ? WHERE `products`.`p-id` = ?;");
 // $updateproduct = $conn->prepare("UPDATE `products` SET `p-name`=?, `p-price`=?, `p-image`=?, `p-detail`=?, `p-status`=? WHERE `products`.`p-id` = ?");
-$updateproduct = $conn->prepare("UPDATE `products` SET `p-status`=? WHERE `products`.`p-id` = ?");
+$updateproduct = $conn->prepare("UPDATE `sellerproducts` SET `p-status`=? WHERE `sellerproducts`.`p-id` = ?");
 
 $updateproduct->execute([$status,$getpid]);
 
@@ -162,7 +162,7 @@ echo"<script> alert('Product Updated Successfully')</script>";
             <input type="file" name="image" accept="image/*" value="<?= $fetch_product['p-image'] ?>" required disabled>
         </div>
 <div class="input-field">
-<img class="Ornamentimage" src="../img/<?= $fetch_product['p-image'] ?> " alt="" disabled>
+<img class="Ornamentimage" src="../seller/img/<?= $fetch_product['p-image'] ?> " alt="" disabled>
 </div>
 
 

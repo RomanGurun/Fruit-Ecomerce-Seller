@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+     --selenagreen: #87a243;
+    --green: #7cab05;
+    --light-green: #e0ffcd;
+    --box-shadow: 0 0 10px rgba(0 0 0/15%);
+}

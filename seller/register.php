@@ -219,7 +219,7 @@
 
 
 <?php
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 
 
 if(isset($_POST['register'])){

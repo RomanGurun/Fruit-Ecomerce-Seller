@@ -1,6 +1,6 @@
 <?php
 include 'navbar.php';
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 
  session_start();
  $adminid= isset($_SESSION['id'])?$_SESSION['id'] :null;
@@ -12,7 +12,7 @@ exit;
 
 
 
-$admin=$conn->prepare("SELECT * FROM `admin` WHERE `id`=? ");
+$admin=$conn->prepare("SELECT * FROM `headadmin` WHERE `id`=? ");
 $admin->execute([$adminid]);
 if($admin->rowCount()>0){
 
@@ -194,7 +194,7 @@ if($seller->rowCount()>0)
 <input type="hidden" name="seller-id"value="<?=$fetchseller['s-id']  ?>">      
 
 <div class="farmerpimage">
-<img id="sellerimg"src="../img/<?= $fetchseller['s-profile']; ?>" alt="">
+<img id="sellerimg"src="../seller/img/<?= $fetchseller['s-profile']; ?>" alt="">
 </div>
 
 

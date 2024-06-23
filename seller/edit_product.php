@@ -1,11 +1,11 @@
 <?php
 include 'navbar.php';
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 ?>
 <?php
 
 $getpid=$_GET['id'];
-$editproduct =$conn->prepare("SELECT * FROM `products` WHERE `p-id`=?");
+$editproduct =$conn->prepare("SELECT * FROM `sellerproducts` WHERE `p-id`=?");
 $editproduct->execute([$getpid]);
 
 // if($editproduct->rowCount()>0){
@@ -17,7 +17,7 @@ $fetch_product=$editproduct->fetch(PDO::FETCH_ASSOC);
 if(isset($_POST['delete'])){
 
     $product=$_POST['productId'];
-   $delete_product= $conn->prepare("DELETE FROM `products` WHERE `products`.`p-id` = ?");
+   $delete_product= $conn->prepare("DELETE FROM `sellerproducts` WHERE `sellerproducts`.`p-id` = ?");
 $delete_product->execute([$product]);
 
 }
@@ -39,7 +39,7 @@ move_uploaded_file($image_tmp_name, $image_folder);
      
 
 // $updateproduct=$conn->prepare("UPDATE `products` SET `p-name`=? `p-price` = ? `p-image`=? `p-detail` = ? `p-status`=  ? WHERE `products`.`p-id` = ?;");
-$updateproduct = $conn->prepare("UPDATE `products` SET `p-name`=?, `p-price`=?, `p-image`=?, `p-detail`=? WHERE `products`.`p-id` = ?");
+$updateproduct = $conn->prepare("UPDATE `sellerproducts` SET `p-name`=?, `p-price`=?, `p-image`=?, `p-detail`=? WHERE `sellerproducts`.`p-id` = ?");
 
 $updateproduct->execute([$name,$price,$image,$detail,$getpid]);
 
@@ -134,7 +134,7 @@ echo"<script> alert('Product Updated Successfully')</script>";
             <input type="file" name="image" accept="image/*" value="<?= $fetch_product['p-image'] ?>" required>
         </div>
 <div class="input-field">
-<img class="Ornamentimage" src="../img/<?= $fetch_product['p-image'] ?> " alt="">
+<img class="Ornamentimage" src="img/<?= $fetch_product['p-image'] ?> " alt="">
 </div>
 
 

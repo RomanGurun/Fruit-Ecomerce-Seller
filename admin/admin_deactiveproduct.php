@@ -1,5 +1,5 @@
 <?php
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 
 include 'navbar.php';
 // $getid=$_GET['post_id'];
@@ -94,7 +94,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 <input type="hidden" name="productId" value="<?= $fetch_product['p-id'];  ?>">  
 
 <div class="farmerpimage">
-<img class="Ornamentimage"src="../img/<?= $fetch_product['p-image']; ?>" alt="">
+<img class="Ornamentimage"src="../seller/img/<?= $fetch_product['p-image']; ?>" alt="">
 </div>
 <div class="farmerproductname">
     <?= $fetch_product['p-name']?>

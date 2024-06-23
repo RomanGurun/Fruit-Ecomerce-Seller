@@ -1,13 +1,13 @@
 <?php
 
 include 'navbar.php';
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 ?>
 <?php
 if(isset($_POST['delete'])){
 
     $product=$_POST['productId'];
-   $delete_product= $conn->prepare("DELETE FROM `products` WHERE `products`.`p-id` = ?");
+   $delete_product= $conn->prepare("DELETE FROM `sellerproducts` WHERE `sellerproducts`.`p-id` = ?");
 $delete_product->execute([$product]);
 
 }
@@ -59,7 +59,7 @@ $view_sellerid= isset($_SESSION['id'])?$_SESSION['id'] :null;
           
           <?php
 
-$select_product=$conn->prepare("SELECT * FROM `products` WHERE `products`.`s-id` = ?");
+$select_product=$conn->prepare("SELECT * FROM `sellerproducts` WHERE `sellerproducts`.`s-id` = ?");
 $select_product->execute([$view_sellerid]);
 //==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
 $select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-id` = ?");
@@ -85,7 +85,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 <input type="hidden" name="productId" value="<?= $fetch_product['p-id'];  ?>">  
 
 <div class="farmerpimage">
-<img class="Ornamentimage"src="../img/<?= $fetch_product['p-image']; ?>" alt="">
+<img class="Ornamentimage"src="img/<?= $fetch_product['p-image']; ?>" alt="">
 </div>
 <div class="farmerproductname">
     <?= $fetch_product['p-name']?>

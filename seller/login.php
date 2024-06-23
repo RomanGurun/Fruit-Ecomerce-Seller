@@ -25,7 +25,7 @@ body{
     /* background:yellow; */
     background-image: url('../img/body-bg.jpg');
     width: 100%;
-
+ 
 }
 
 /* 
@@ -202,7 +202,7 @@ width:22%;
 </body>
 </html>
 <?php
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 
 session_start();
 
@@ -213,7 +213,7 @@ $password=$_POST['password'];
 
 $checkemail=$conn->prepare("SELECT * FROM `seller` WHERE `s-email` = ?");
 $checkemail->execute([$email]);
-
+ 
 if($checkemail->rowCount()>0){
     // $checkpassword=$conn->prepare("SELECT * FROM `seller` WHERE `s-password` = ?");
     // $checkpassword->execute([$password]);

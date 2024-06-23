@@ -1,6 +1,6 @@
 <?php
 include 'navbar.php';
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 
  session_start();
  $sellerid= isset($_SESSION['id'])?$_SESSION['id'] :null;

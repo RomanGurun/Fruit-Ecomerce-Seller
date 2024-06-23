@@ -1,6 +1,6 @@
 <?php
 include 'navbar.php';
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 
  session_start();
  $adminid= isset($_SESSION['adminid'])?$_SESSION['adminid'] :null;
@@ -12,7 +12,7 @@ exit;
 
 
 
-$admin=$conn->prepare("SELECT * FROM `admin` WHERE `id`=? ");
+$admin=$conn->prepare("SELECT * FROM `headadmin` WHERE `id`=? ");
 $admin->execute([$adminid]);
 if($admin->rowCount()>0){
 
@@ -197,7 +197,7 @@ $fetchseller = $seller->fetch(PDO::FETCH_ASSOC);
 // ==================PRODUCT PENDING ROWCOUNT PHP CODE ============================================================
 
 $pvalue="pending";
-$product=$conn->prepare("SELECT * FROM `products` WHERE `p-status`= ? ");
+$product=$conn->prepare("SELECT * FROM `sellerproducts` WHERE `p-status`= ? ");
 $product->execute([$pvalue]);
 
 $fetchpstatus=$product->rowCount();
@@ -206,7 +206,7 @@ $fetchpstatus=$product->rowCount();
 
 // ==================PRODUCT ACTIVE ROWCOUNT PHP CODE ============================================================
 // $pvaluetwo="active";
-$product2=$conn->prepare("SELECT * FROM `products` WHERE `p-status` = ?");
+$product2=$conn->prepare("SELECT * FROM `sellerproducts` WHERE `p-status` = ?");
 $product2->execute(["active"]);
 $result2=$product2->rowCount();
 // ==================PRODUCT ACTIVE ROWCOUNT PHP CODE ============================================================
@@ -215,7 +215,7 @@ $result2=$product2->rowCount();
 
 // ==================PRODUCT DEACTIVE ROWCOUNT PHP CODE ============================================================
 // $pvaluetwo="active";
-$product3=$conn->prepare("SELECT * FROM `products` WHERE `p-status` = ?");
+$product3=$conn->prepare("SELECT * FROM `sellerproducts` WHERE `p-status` = ?");
 $product3->execute(["deactive"]);
 $result3=$product2->rowCount();
 // ==================PRODUCT DEACTIVE ROWCOUNT PHP CODE ============================================================

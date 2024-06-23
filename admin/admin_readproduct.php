@@ -1,22 +1,28 @@
 <?php
-include '../component/dbconnect.php';
+include 'component/dbconnect.php';
 
 include 'navbar.php';
 $getid=$_GET['post_id'];
-$view_sellerid=$_GET['sid'];
+
+
+// anchor tag ma postid rw sid here get request bata import garda mathi ko post-id variable matra aayo
+// sid aayena.........
+
+
+// $view_sellerid=$_GET['sid'];
 
 //==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
-$select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-id` = ?");
-$select_from_foreign->execute([$view_sellerid]);
+// $select_from_foreign=$conn->prepare("SELECT * FROM `seller` WHERE `s-id` = ?");
+// $select_from_foreign->execute([$view_sellerid]);
 // $fetch_foreign=$select_from_foreign->fetch(PDO::FETCH_ASSOC);
 
-if ($select_from_foreign) {
-    $fetch_foreign = $select_from_foreign->fetch(PDO::FETCH_ASSOC);
+// if ($select_from_foreign) {
+    // $fetch_foreign = $select_from_foreign->fetch(PDO::FETCH_ASSOC);
     // Your code to use $fetch_foreign
-} else {
+// } else {
     // Handle the case when the query fails
-    echo "Error: Unable to fetch seller information.";
-}
+    // echo "Error: Unable to fetch seller information.";
+// }
 
 //==================== FOREIGN KEY IMPORT CONCEPT HERE SELLER TABLE IS SELECT ====================================
 
@@ -29,7 +35,7 @@ if ($select_from_foreign) {
 if(isset($_POST['delete'])){
 
     $product=$_POST['productId'];
-   $delete_product= $conn->prepare("DELETE FROM `products` WHERE `products`.`p-id` = ?");
+   $delete_product= $conn->prepare("DELETE FROM `sellerproducts` WHERE `products`.`p-id` = ?");
 $delete_product->execute([$product]);
 
 }
@@ -75,7 +81,7 @@ $delete_product->execute([$product]);
           
           <?php
 
-$select_product=$conn->prepare("SELECT * FROM `products` WHERE `p-id`=? ");
+$select_product=$conn->prepare("SELECT * FROM `sellerproducts` WHERE `p-id`=? ");
 $select_product->execute([$getid]);
 if($select_product->rowCount()>0){
 
@@ -85,7 +91,8 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 ?>
 <form action="" method="post">
     <div class="farmerpbox">
-    <span class="seller-id">Product id is <?= $fetch_product['p-id'] ?> and seller-name is <?= $fetch_foreign['s-name'] ?> </span>
+
+    <span class="seller-id">Product id is <?= $fetch_product['p-id'] ?>  </span>
 
         <span class="farmerpstatus" style="<?php if($fetch_product['p-status']=="deactive"){
             echo"color:red "; } ?> " >  <?= $fetch_product['p-status']; ?>  </span>
@@ -94,7 +101,7 @@ while($fetch_product=$select_product->fetch(PDO::FETCH_ASSOC))
 <input type="hidden" name="productId" value="<?= $fetch_product['p-id'];  ?>">  
 
 <div class="farmerpimage">
-<img class="Ornamentimage"src="../img/<?= $fetch_product['p-image']; ?>" alt="">
+<img class="Ornamentimage"src="../seller/img/<?= $fetch_product['p-image']; ?>" alt="">
 </div>
 <div class="farmerproductname">
     <?= $fetch_product['p-name']?>

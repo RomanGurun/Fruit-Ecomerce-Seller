@@ -1,0 +1,353 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+     --selenagreen: #87a243;
+    --green: #7cab05;
+    --light-green: #e0ffcd;
+    --box-shadow: 0 0 10px rgba(0 0 0/15%);
+}
+
+.carousel{
+    /* border:solid 2px green; */
+    box-shadow: var(--box-shadow);
+    margin-left:7%;
+    margin-top:5%;
+    
+ background: #fff; 
+
+    
+    
+    }
+    
+    .fruitspage{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+/* background: url(../sellerimage/wall.jpg); */
+
+background: url(../sellerimage/highq.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:rgba(0, 0, 0, 0.7);  
+    /* background-blend-mode:darken; */
+    /* border: solid 2px red; */
+    /* width: 100%; */
+    height: 22rem;
+margin-top: 10px;
+}
+     
+    #heading{
+        color:#fff;
+
+        
+    }
+    .box{
+        padding:20px;
+        border-top:solid 2px green;
+        box-shadow: var(--box-shadow);
+        margin-top:6px;
+     }
+    .box a{
+        text-decoration: none;
+        color: var(--selenagreen);
+        cursor: pointer;
+        font-size: 18px;
+        text-transform: uppercase;
+
+    }
+   span{
+        cursor: pointer;
+        color:black;
+        font-size: 18px;
+        text-transform: uppercase;
+
+        margin-left:8px;
+    }
+    .main {
+        display: flex;
+        /* border:solid 2px black; */
+        justify-content: center;
+        margin: 5rem;
+        background: #fff;
+        /* box-shadow: 0 2px 6px 0 rgba(0 0 0/10%); */
+        box-shadow: 0 10px 18px 0 rgba(0 0 0/10%);
+
+    }
+
+    section {
+
+        display: flex;
+        /* border:solid 2px black; */
+        width: 100%;
+        /* width:100%; */
+        flex-wrap: wrap;
+        margin: 20px 20px;
+
+        /* box-shadow: 0 10px 18px 0 rgba(0 0 0/10%); */
+        background: #fff;
+
+    }
+
+    form {}
+
+    label {
+        color: var(--green);
+        display: block;
+   font-size:23px;
+        text-transform: capitalize;
+        /* text-align:center; */
+    }
+
+    .input-field {
+        width: 100%;
+
+    }
+
+    h1 {
+        font-size: 25px;
+        text-align: center;
+        color:black;
+        /* margin-right: 56px; */
+    }
+.h1Addproduct{
+    text-align: center;
+}
+    .btn:hover {
+        background-color: var(--selenagreen);
+    }
+.btn{
+    color:black;
+}
+
+    .btn,
+    input,textarea {
+        
+        transition: 1.0s background;
+        margin: 8px;
+        display: block;
+        margin: 20px auto;
+
+        box-shadow: 0 5px 10px 0.1px rgba(0, 0, 0, 0.1);
+        border: none;
+        width: 25%;
+        border-radius: 12px;
+        cursor: pointer;
+        padding: 8px;
+    
+    }
+.add-product-btn{
+
+margin:19px 14px;
+font-size: 20px;
+padding:10px;
+}
+    input {
+        width: 100%;
+        outline: none;
+        line-height: 20px;
+        font-size: 20px;
+    }
+  
+  
+    textarea{
+        width: 100%;
+        outline: none;
+        line-height: 20px;
+        font-size: 20px;
+  
+
+    }
+    .addproduct-footer{
+        display: flex;
+        justify-content: center;
+    }
+    form {
+        /* border:solid 2px green; */
+        width: 100%;
+        padding: 20px;
+    }
+
+    p,
+    a {
+        text-transform: capitalize;
+        text-align: center;
+    }
+
+    a {
+        list-style: none;
+        color: red;
+        text-decoration: none;
+    }
+
+    sup {
+        color: red;
+    }
+
+    /*======================================== MEDAI QUERY ======================================================= */
+
+    @media(max-width:991px) {
+        .main {
+            margin: 2rem;
+            /* margin:1rem; */
+        }
+
+        section {
+            margin: none;
+            width: 100%;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .btn {
+
+            width: 100%;
+            display: block;
+            width: 40%;
+            font-size: 18px;
+        }
+
+            #AllProduct .farmerpbox .price{
+                margin-left: 3rem !important;
+            }
+        
+            .NoProductBox{
+margin-left:0rem !important;
+
+    }
+    }
+/*======================================== MEDAI QUERY ======================================================= */
+
+
+    /*================================================ ADD PRODUCT CSSS END================================================ */
+    /*================================================ VIEW PRODUCT CSSS SATRT================================================ */
+    
+#AllProduct{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+    width:100%;
+   /* box-shadow:var(--box-shadow); */
+
+}
+.productheading{
+    /* border:solid 2px black; */
+    text-align: center;
+ text-transform: capitalize;
+    width:100%;
+
+}
+.Ornamentimage{
+    width:100%;
+    height:15rem;
+    object-fit: contain;
+}
+.farmerEDRbox{
+ display: flex;
+ justify-content: center;   
+ align-items: center;
+}
+.farmerpbox{
+    box-shadow:var(--box-shadow);
+    height:32rem;
+    box-shadow:var(--box-shadow);  
+}.farmerpstatus{
+    display: inline-block;
+    font-size: 22px;
+    background: var(--light-green);
+    border-radius: 9px;
+    color: #7cab05;
+    padding: 3px 12px;
+    margin-top: 13px;
+    text-transform:capitalize;
+}
+
+#AllProduct .farmerpbox .price{
+    display: inline-block;
+    font-size: 27px;
+    padding: 3px 12px;
+    margin-top: 13px;
+    margin-bottom: 38px;
+    margin-left: 10rem;
+    text-transform:capitalize;
+    font-weight:bold;
+    color:var(--green); 
+}
+.farmermessage{
+    text-align: center;
+    font-weight: 200;
+    display: block;
+    margin-top: 25px;
+    font-size: 23px;
+}
+.farmerproductname{
+
+    
+text-align: center;
+font-weight: 600;
+display: block;
+margin-top: 25px;
+font-size: 23px;
+}
+
+
+/*======================================== MEDAI QUERY ======================================================= */
+
+@media(max-width:500px){
+    #AllProduct .farmerpbox .price{
+        margin-left: 3rem !important;
+    }
+
+    .NoProductBox{
+        margin-left:2rem !important;
+        
+            }
+
+}
+/*======================================== MEDAI QUERY ======================================================= */
+
+.viewpath{
+    color:black;
+    font-size: 20px;
+}
+
+.NoProductBox{
+
+    background-color: #87a243;
+    padding: 20px;
+    display: flex;
+    /* margin-left: 5rem; */
+
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   width:100%;
+
+
+
+}
+.addpath{
+    display: block;
+margin-top: 22px;
+background-color: var(--light-green);
+font-size: 19px;
+}
+
+#Productheading{
+    margin-top:1rem;
+    text-align:center;
+margin-right: 0rem;
+color:#fff;
+}
+    
+
+    /*================================================ VIEW PRODUCT CSSS END================================================ */
+    
